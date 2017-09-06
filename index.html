@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>self-vue</title>
+</head>
+<style>
+    #app {
+        text-align: center;
+    }
+</style>
+<body>
+    <div id="app">
+        <h2>{{title}}</h2>
+        <input v-model="name">
+        <h1>{{name}}</h1>
+        <button v-on:click="clickMe">click me!</button>
+    </div>
+</body>
+<script src="js/observer.js"></script>
+<script src="js/watcher.js"></script>
+<script src="js/compile.js"></script>
+<script src="js/index.js"></script>
+<script type="text/javascript">
+
+     new Vue({
+        el: '#app',
+        created: function () {
+            this.title = 'created改变';
+        },
+        mounted: function () {
+            window.setTimeout(() => {
+                this.title = 'mounted改变';
+            }, 1000);
+        },
+        data: {
+            title: 'data原始title',
+            name: 'data原始name'
+        },
+        methods: {
+            clickMe: function () {
+                this.title = 'click改变title';
+                this.name = 'click改变name';
+            }
+        }
+    });
+
+</script>
+</html>
